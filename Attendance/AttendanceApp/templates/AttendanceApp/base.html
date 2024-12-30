@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block 'title' %} {% endblock %}</title>
+
+    <script>
+      window.onload = function () {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              console.log(position);
+              const { latitude, longitude } = position.coords;
+              // showDetails.textContent = `The latitude ${latitude} & longitude ${longitude}`;
+              document.getElementById("londitude1").value = longitude;
+              document.getElementById("langitude1").value = latitude;
+            },
+            (error) => {
+              showDetails.textContent = error.message;
+              console.log(error.message);
+            }
+          );
+        }
+      };
+    </script>
+  </head>
+  <body>
+    {% block 'content' %} {% endblock %}
+  </body>
+</html>

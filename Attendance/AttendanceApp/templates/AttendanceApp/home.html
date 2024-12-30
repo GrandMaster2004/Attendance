@@ -1,0 +1,37 @@
+{% extends 'AttendanceApp/base.html' %} 
+{% block 'title' %}home.com {% endblock %} 
+{% block 'content' %}
+
+<h1>This is Signup and login page</h1>
+<form action="{% url 'signup_view' %}" method="post">
+  {% csrf_token %}
+  <!-- {{form.as_p}} -->
+
+  <h4>Name</h4>
+  {{ form.student_name}}
+  <h4>Roll Number</h4>
+  {{ form.roll_no}}
+  <h4>Email</h4>
+  {{ form.email}}
+
+  <h4>Branch</h4>
+  {{ form.branch}}
+  <h4>Year</h4>
+  {{ form.year}}
+  <!-- <h4>User Image</h4>
+    {{ form.user_img}} -->
+  <h4>DOB</h4>
+  {{ form.dob}}
+  <h4>Number</h4>
+
+  {{ form.number}}
+
+  <h4>Password1</h4>
+  {{form.password1}}
+  <h4>Password2</h4>
+  {{form.password2}}
+
+  <button type="submit">signUp</button>
+</form>
+<a href="{% url 'login_view' %}">login</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'AttendanceApp/base.html' %} 
+{% block 'title' %}home.com {% endblock %} 
+{% block 'content' %}
+
+<h1>This is Sotpp and login page</h1>
+<form action="{% url 'login_view' %}" method="post">
+  {% csrf_token %}
+  <h4>Roll Number</h4>
+  <input type="text" name="roll_no" maxlength="10" required id="roll_no">
+  <h4>Password</h4>
+  <input type="text" name="password" required id="password">
+  <button type="submit">login</button>
+</form>
+<a href="{% url 'signup_view' %}">signUp</a>
+{% endblock %}

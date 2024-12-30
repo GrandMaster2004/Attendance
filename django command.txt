@@ -1,0 +1,8 @@
+django-admin startproject projectName
+django-admin startapp projectApp
+
+
+anonimas app
+
+
+

@@ -1,0 +1,67 @@
+{% extends 'AttendanceApp/base.html' %} 
+{% block 'title' %}home.com {% endblock %} 
+{% block 'content' %}
+
+
+<h1>This is Sotpp and prfilr login page</h1>
+{% if not request.user.is_staff %}
+<form action="{% url 'profile_view' %}" method="post">
+    {% csrf_token %}
+    <h2>otp</h2>
+    <input type="text" name="otp1" id="otp1">
+    <input type="text" hidden value="{{ otp2}}" name="otp2" id="otp2">
+    <button type="submit">submit</button>
+</form>
+{% endif %}
+
+{% if request.user.is_authenticated and request.user.is_staff and request.user.is_active and not request.user.is_superuser %}
+<h4>THis is final product of my house you can fuck</h4>
+<form action="{% url 'data_view' %}" method="post">
+    <input type="text" name="londitude" value="" id="londitude1" />
+    <input type="text" name="langitude" value="" id="langitude1" />
+    <p class="showDetails">User location details</p>
+
+    {% csrf_token %}
+    <h2>Attendance</h2>
+    <h4>Subject Name</h4>
+    <input type="text" name="subCode" id="subCode">
+    <h4>Section</h4>
+    <input type="text" name="sec" id="sec">
+    <h4>Opt</h4>
+    <input type="text" name="otp" id="otp">
+    <button type="submit">submit</button>
+
+    <input type="text" name="name" value="{{request.user.student_name}}" hidden id="name">
+    <input type="text" name="branch" value="{{request.user.branch}}" hidden id="branch">
+    <input type="text" name="roll_no" value="{{request.user.roll_no}}" hidden id="roll_no">
+    <input type="text" name="year" value="{{request.user.year}}" hidden id="year">
+
+</form>
+{% endif %}
+{% if request.user.is_superuser %}
+<h1>Super user</h1>
+<form action="{% url 'superUser' %}" method="post">
+    <input type="text" name="londitude" value="" id="londitude1" />
+    <input type="text" name="langitude" value="" id="langitude1" />
+    <p class="showDetails">User location details</p>
+
+    {% csrf_token %}
+    <h2>Attendance</h2>
+    <h4>Branch Name</h4>
+    <input type="text" name="branch" id="branch">
+
+    <h4>Section</h4>
+    <input type="text" name="sec" id="sec">
+    <h4>Year</h4>
+    <input type="text" name="year" id="year">
+    <h4>Subject Code</h4>
+    <input type="text" name="subCode" id="subCode">
+    <!-- loaction -->
+   
+    <button type="submit">submit</button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}
